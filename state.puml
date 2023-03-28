@@ -1,0 +1,32 @@
+@startuml
+'https://plantuml.com/state-diagram
+
+scale 350 width
+[*] -> Login : Not Login
+Login : Input Name
+Login -> AdminLogin : 1-Admin
+AdminLogin : 1. Found Book
+AdminLogin :2. Add Book
+AdminLogin : 1. Delete Book
+AdminLogin : 1. Display All Books
+Login --> UserLogin : 2-User
+
+
+'state NotShooting {
+'  [*] --> Idle
+'  Idle --> Configuring : 1
+'  Configuring --> Idle : EvConfig
+'}
+'
+'state Configuring {
+'  [*] --> NewValueSelection
+'  NewValueSelection --> NewValuePreview : EvNewValue
+'  NewValuePreview --> NewValueSelection : EvNewValueRejected
+'  NewValuePreview --> NewValueSelection : EvNewValueSaved
+'
+'  state NewValuePreview {
+'     State1 -> State2
+'  }
+'
+'}
+@enduml

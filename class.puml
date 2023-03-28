@@ -1,0 +1,80 @@
+@startuml
+class operation.BorrowBook {
++ void work(BookList)
+}
+class operation.AddBook {
++ void work(BookList)
+}
+interface operation.IBook {
+~ void work(BookList)
+}
+class book.BookList {
+- int usedsize
+- Book[] books
++ void setBooks(int,Book)
++ Book getBook(int)
++ int getUsedsize()
++ void setUsedsize(int)
++ Book[] getBooks()
+}
+class operation.ReturnBook {
++ void work(BookList)
+}
+abstract class user.User {
+# String name
+# IBook[] operation
++ {abstract}int menu()
++ void doOperation(int,BookList)
+}
+class operation.DisplayBook {
++ void work(BookList)
+}
+class book.Book {
+- String name
+- String author
+- int price
+- String type
+- boolean statues
++ String getName()
++ void setName(String)
++ String getAuthor()
++ void setAuthor(String)
++ int getPrice()
++ void setPrice(int)
++ String getType()
++ void setType(String)
++ boolean isStatues()
++ void setStatues(boolean)
++ String toString()
+}
+class operation.ExitBook {
++ void work(BookList)
+}
+class operation.FoundBook {
++ void work(BookList)
+}
+class user.NormalUser {
++ int menu()
+}
+class Main {
++ {static} void main(String[])
++ {static} User login()
+}
+class user.AdminUser {
++ int menu()
+}
+class operation.DelBook {
++ void work(BookList)
+}
+
+
+operation.IBook <|.. operation.BorrowBook
+operation.IBook <|.. operation.AddBook
+operation.IBook <|.. operation.ReturnBook
+operation.IBook <|.. operation.DisplayBook
+operation.IBook <|.. operation.ExitBook
+operation.IBook <|.. operation.FoundBook
+user.User <|-- user.NormalUser
+user.User <|-- user.AdminUser
+operation.IBook <|.. operation.DelBook
+@enduml
